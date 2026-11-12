@@ -1,0 +1,26 @@
+# Файлы сборки (создаются компилятором)
+build/
+out/
+bin/
+obj/
+x64/
+x86/
+Debug/
+Release/
+
+# Файлы Visual Studio
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj*
+
+# Исполняемые файлы и отладка
+*.exe
+*.pdb
+*.ilk
+*.obj
+
+# Системный мусор
+.DS_Store
+Thumbs.db
