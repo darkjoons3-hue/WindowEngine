@@ -1,0 +1,27 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Compile C++ Code
+      run: |
+        cl.exe /EHsc /std:c++20 /I include src/main.cpp /Fe:WindowEngine.exe /link /SUBSYSTEM:WINDOWS user32.lib gdi32.lib d2d1.lib dwrite.lib windowscodecs.lib
+
+    - name: Upload EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: WindowEngine-Windows
+        path: WindowEngine.exe
